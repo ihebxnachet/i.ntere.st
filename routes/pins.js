@@ -40,7 +40,7 @@ module.exports=(app)=>{
      app.get('/pins/index',(req,res,pins)=>{
                
                 })
-                app.get('/pins/My-pins',(req,res,pins)=>{
+                app.get('/My-pins',(req,res,pins)=>{
                     
                     const db = firebase.database();
                     //var node=[]
@@ -52,9 +52,10 @@ module.exports=(app)=>{
                           item.key = childSnapshot.key;
                   
                           returnArr.push(item);
+                          
                       });
-                  res.render('pins/myPins',{pins:returnArr})
-
+                 
+                      res.render('pins/myPins',{pins:returnArr})
                       return returnArr;
                   };
                   db.ref("/pin").on('value', function(snapshot) {

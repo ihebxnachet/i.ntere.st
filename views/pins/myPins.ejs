@@ -1,22 +1,30 @@
 <% layout('layout') %>
 <div class="container">
-   
-    <div>
+  <div class="grid">
+    <div class="grid-sizer col-md-3"></div>
         <% for (var i=0 ; i < pins.length; i++){  %>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="<%= pins[i].path -%>" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title"><%- pins[i].title %></h5>
-                  <p class="card-text"><%- pins[i].desc %></p>
-                  <a href="#" class="btn btn-primary"><%- pins[i].createdBy %></a>
+           
+              <div class="grid-item col-md-<%= Math.floor(Math.random() * 3 )+3 %> mb-4">
+                <div class="card" >
+                  <img class="card-img-top" style="height: 250px" src="<%- pins[i].path -%>" alt="Card image cap">
+                  <div class="card-body">
+                    <%- pins[i].title %>
+                  </div>
                 </div>
               </div>
-          
-
-
+              
+              
 
 
             <% } %>
-    </div>    
-
+    
+    <script>
+      $('.grid').masonry({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true
+  });
+  </script> 
 </div>
+</div>
+

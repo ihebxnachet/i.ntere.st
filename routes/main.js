@@ -8,9 +8,6 @@ module.exports=(app)=>{
         })
         
             
-            app.get('/My-pins',(req,res,next)=>{
-                res.render('pins/myPins')
-                })
                 app.get('/Shop',(req,res,next)=>{
                     res.render('pins/shop')
                     })
