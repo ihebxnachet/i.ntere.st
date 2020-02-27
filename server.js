@@ -6,23 +6,19 @@ var ejs=require ('ejs');
 var engine=require ('ejs-mate');
 var fileUpload=require ('express-fileupload');
 var app=express();
-// mangoose.connect('mongodb://ihebxnachet:zBVG6R1GtL2Pn8Uv@pin-clone-947c9.mongodb.net/test?retryWrites=true&w=majority',(err)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log('connected DB')
-//     }
-// },{ useNewUrlParser: true })
+const firebase = require('firebase');
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://ihebxnachet:zBVG6R1GtL2Pn8Uv@pin-clone-947c9.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true ,useUnifiedTopology: true });
-client.connect(err => {
-    if(!err){
-        console.log("done")
-    }
- 
-});
+var config = {
+    apiKey: "AIzaSyAx3B8qG92X5XrJCNAj9niPXALcgc8ZVDU",
+    authDomain: "pin-clone.firebaseapp.com",
+    databaseURL: "https://pin-clone.firebaseio.com/",
+    storageBucket: "pin-clone.appspot.com"
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the database service
+  var database = firebase.database();
+
 app.use(fileUpload());
 app.use(express.static(__dirname+'/public'));
 app.engine('ejs',engine);

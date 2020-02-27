@@ -1,2 +1,22 @@
 <% layout('layout') %>
-myPins
+<div class="container">
+   
+    <div>
+        <% for (var i=0 ; i < pins.length; i++){  %>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="<%= pins[i].path -%>" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><%- pins[i].title %></h5>
+                  <p class="card-text"><%- pins[i].desc %></p>
+                  <a href="#" class="btn btn-primary"><%- pins[i].createdBy %></a>
+                </div>
+              </div>
+          
+
+
+
+
+            <% } %>
+    </div>    
+
+</div>
